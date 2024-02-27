@@ -8,13 +8,13 @@ import java.time.LocalDateTime
 @Table(name = "coupons")
 data class Coupon(
   @Id
-  val id: Long,
+  val id: String,
   val price: Long,
   val isUsed: Boolean,
   val issuedAt: LocalDateTime = LocalDateTime.now(),
 ) {
   constructor() : this(
-    0,
+    "",
     0,
     false,
     LocalDateTime.now(),

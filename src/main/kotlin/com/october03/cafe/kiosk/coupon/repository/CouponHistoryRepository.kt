@@ -10,12 +10,12 @@ import java.time.LocalDateTime
 @Table(name = "coupon_histories")
 data class CouponHistory(
   @Id
-  val id: Long,
+  val id: String,
   val userId: Long,
   val usedAt: LocalDateTime = LocalDateTime.now(),
 ) {
   constructor() : this(
-    0,
+    "",
     0,
     LocalDateTime.now(),
   )
