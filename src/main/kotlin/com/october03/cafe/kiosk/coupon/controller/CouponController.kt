@@ -27,7 +27,7 @@ class CouponController(
 
   @GetMapping("/coupons")
   fun getCoupons(): List<Coupon> {
-    return couponService.findAllCoupon()
+    return couponService.findAllCoupon().sortedBy { it.issuedAt }
   }
 
   @PostMapping("/use-coupon/{id}")
