@@ -17,4 +17,8 @@ class CouponHistoryService(
 
     couponHistoryRepository.save(newHistory)
   }
+
+  fun findAllHistory(): List<CouponHistory> {
+    return couponHistoryRepository.findAll()
+  }
 }
