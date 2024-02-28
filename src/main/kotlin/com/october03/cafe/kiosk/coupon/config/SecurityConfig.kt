@@ -25,7 +25,7 @@ class SecurityConfig(
       }
     }
     http.authorizeHttpRequests {
-      it.requestMatchers("/issue-coupon").permitAll()
+      it.requestMatchers("/issue-coupon", "/coupons").permitAll()
       it.anyRequest().authenticated()
     }
     http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)

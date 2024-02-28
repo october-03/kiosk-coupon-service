@@ -22,4 +22,9 @@ class CouponController(
   fun getCoupon(@PathVariable id: String): Coupon {
     return couponService.findCouponWithId(id)
   }
+
+  @GetMapping("/coupons")
+  fun getCoupons(): List<Coupon> {
+    return couponService.findAllCoupon()
+  }
 }

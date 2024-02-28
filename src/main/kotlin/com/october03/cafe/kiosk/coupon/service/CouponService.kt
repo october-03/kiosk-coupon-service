@@ -47,4 +47,8 @@ class CouponService(
 
     return coupon
   }
+
+  fun findAllCoupon(): List<Coupon> {
+    return couponRepository.findAll()
+  }
 }
