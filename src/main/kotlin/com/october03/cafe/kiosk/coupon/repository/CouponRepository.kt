@@ -3,6 +3,7 @@ package com.october03.cafe.kiosk.coupon.repository
 import jakarta.persistence.*
 import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDateTime
+import java.util.*
 
 @Entity
 @Table(name = "coupons")
@@ -22,5 +23,5 @@ data class Coupon(
 }
 
 interface CouponRepository: JpaRepository<Coupon, Long> {
-
+  fun findById(id: String): Optional<Coupon>
 }

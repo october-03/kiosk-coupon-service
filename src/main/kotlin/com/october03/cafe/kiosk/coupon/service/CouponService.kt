@@ -41,4 +41,10 @@ class CouponService(
 
     return newCoupon
   }
+
+  fun findCouponWithId(id: String): Coupon {
+    val coupon = couponRepository.findById(id).orElse(null)
+
+    return coupon
+  }
 }
