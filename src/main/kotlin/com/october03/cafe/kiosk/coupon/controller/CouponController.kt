@@ -1,8 +1,10 @@
 package com.october03.cafe.kiosk.coupon.controller
 
 import com.october03.cafe.kiosk.coupon.dto.IssueCouponDto
+import com.october03.cafe.kiosk.coupon.dto.UseCouponDto
 import com.october03.cafe.kiosk.coupon.repository.Coupon
 import com.october03.cafe.kiosk.coupon.service.CouponService
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -26,5 +28,17 @@ class CouponController(
   @GetMapping("/coupons")
   fun getCoupons(): List<Coupon> {
     return couponService.findAllCoupon()
+  }
+
+  @PostMapping("/use-coupon/{id}")
+  fun useCoupon(@PathVariable id: String, http: HttpServletRequest): Coupon {
+    val authToken = http.getAttribute("authToken") as String
+
+    val req = UseCouponDto(
+      couponId = id,
+      authToken = authToken
+    )
+
+    return couponService.useCoupon(req)
   }
 }

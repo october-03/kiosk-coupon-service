@@ -11,7 +11,7 @@ data class Coupon(
   @Id
   val id: String,
   val price: Long,
-  val isUsed: Boolean,
+  var isUsed: Boolean,
   val issuedAt: LocalDateTime = LocalDateTime.now(),
 ) {
   constructor() : this(
