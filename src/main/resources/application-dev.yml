@@ -4,3 +4,6 @@ spring:
     username: october03
     password: 1q2w3e4r!@
     driver-class-name: org.postgresql.Driver
+
+api:
+  base-url: http://localhost:61999

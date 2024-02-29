@@ -5,17 +5,21 @@ import com.october03.cafe.kiosk.coupon.dto.UseCouponDto
 import com.october03.cafe.kiosk.coupon.dto.User
 import com.october03.cafe.kiosk.coupon.repository.Coupon
 import com.october03.cafe.kiosk.coupon.repository.CouponRepository
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
 @Service
 class CouponService(
+  @Value("\${api.base-url}")
+  private val baseUrl: String,
+
   private val couponRepository: CouponRepository,
   webClientBuilder: WebClient.Builder,
   private val couponHistoryService: CouponHistoryService
 ) {
-  private var webClient = webClientBuilder.baseUrl("http://localhost:61999").build()
+  private var webClient = webClientBuilder.baseUrl(baseUrl).build()
 
   fun issueCoupon(price: Long): Coupon {
     var couponCode: String = ""
